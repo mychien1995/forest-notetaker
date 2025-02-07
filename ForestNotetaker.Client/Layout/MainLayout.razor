@@ -1,16 +1,23 @@
 ﻿@inherits LayoutComponentBase
+@inject ForestNotetaker.Business.Services.AuthService AuthService
+@inject NavigationManager NavigationManager
 <div class="page">
-    <div class="sidebar">
+    <div class="wrapper">
+        <TopBar />
         <NavMenu />
-    </div>
-
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
+        <div class="content-page">
             @Body
-        </article>
-    </main>
+        </div>
+    </div>
 </div>
+
+@code{
+    protected override async Task OnInitializedAsync()
+    {
+        var isLoggedIn = AuthService.IsUserLoggedIn();
+        if (!isLoggedIn)
+        {
+            NavigationManager.NavigateTo("/login"); 
+        }
+    }
+}
