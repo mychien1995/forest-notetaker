@@ -1,7 +1,13 @@
-﻿<button>
-
+﻿@page "/login"
+@inject AuthService AuthService
+@layout EmptyLayout
+<button @onclick="RedirectToLogin">
+    Login with Google
 </button>
 
 @code {
-
+    private void RedirectToLogin()
+    {
+        AuthService.LoginWithGoogle();
+    }
 }

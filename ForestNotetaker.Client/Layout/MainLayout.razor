@@ -1,5 +1,4 @@
 ﻿@inherits LayoutComponentBase
-@inject ForestNotetaker.Business.Services.AuthService AuthService
 @inject NavigationManager NavigationManager
 <div class="page">
     <div class="wrapper">
@@ -14,10 +13,10 @@
 @code{
     protected override async Task OnInitializedAsync()
     {
-        var isLoggedIn = AuthService.IsUserLoggedIn();
-        if (!isLoggedIn)
-        {
-            NavigationManager.NavigateTo("/login"); 
-        }
+        // var isLoggedIn = AuthService.IsUserLoggedIn();
+        // if (!isLoggedIn)
+        // {
+        //     NavigationManager.NavigateTo("/login"); 
+        // }
     }
 }
